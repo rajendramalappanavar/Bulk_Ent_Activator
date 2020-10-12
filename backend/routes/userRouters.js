@@ -81,12 +81,12 @@ router.post("/entitlements", async (req, res) => {
 
             if(selectresult.length === 0){
                 const insertSql = "INSERT INTO `entlist` (`id`, `opporunity_id`, `compnay_id`, `ent`, `sett`, `count`) VALUES (NULL, ?, ?, ?, ?, ?)";
-                const insertResults = connection.query(insertSql,[opids[i],1111,entname,bool,counts]);
-                results.push({OpId : opids[i], Message : "Success"})
+                const insertResults = connection.query(insertSql,[opids[i],'5cd2d78bb1ebc0b5a1c22er42',entname,bool,counts]);
+                results.push({OpId : opids[i], Message : "Successfully Activated"})
 
             } else{
                      var sql = "UPDATE `entlist` SET `compnay_id` = ?, `sett` = ?, `count` = ? WHERE `opporunity_id` = ? AND `ent` = ?";
-                     const result = connection.query(sql,[1111,bool,counts,opids[i],entname]);
+                     const result = connection.query(sql,['5cd2d78bb1ebc0b5a1c22er42',bool,counts,opids[i],entname]);
                       if (result.affectedRows >= 1) {
                          results.push({OpId : opids[i], Message : "Successfully Activated"})
                        }
